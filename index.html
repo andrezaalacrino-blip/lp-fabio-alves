@@ -1019,8 +1019,498 @@ img, video, svg {
     max-width: 300px !important;
   }
 }
-</style>
 
+/* ============================ MOBILE FINAL — HERO / VÍDEOS / CTA ============================ */
+
+/* Por padrão o CTA inferior fica realmente oculto.
+   Ele só será ativado por JS depois que o formulário ficar para trás. */
+.sticky-cta{
+  display:none !important;
+  opacity:0;
+  transform:translateY(120%);
+  pointer-events:none;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.sticky-cta.is-visible{
+  display:block !important;
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+@media(max-width:760px){
+
+  /* mais respiro e proporções menores no topo */
+  body{
+    padding-bottom:0 !important;
+  }
+
+  .hero{
+    overflow:visible;
+  }
+
+  .hero-in{
+    padding:46px 0 64px !important;
+    gap:36px !important;
+  }
+
+  .hero-l{
+    width:100%;
+    padding-top:6px;
+  }
+
+  .hero-chip{
+    margin-bottom:22px !important;
+    max-width:calc(100vw - 36px);
+  }
+
+  .hero h1{
+    font-size:clamp(27px,7.6vw,32px) !important;
+    line-height:1.09 !important;
+    letter-spacing:-.035em !important;
+    margin-bottom:22px !important;
+  }
+
+  .hero .lead{
+    font-size:15px !important;
+    line-height:1.7 !important;
+  }
+
+  .coupon{
+    margin-top:26px !important;
+    padding:20px !important;
+    gap:16px !important;
+  }
+
+  .coupon-v{
+    font-size:clamp(20px,6.4vw,24px) !important;
+    letter-spacing:.035em !important;
+  }
+
+  .hero-cta{
+    margin-top:24px !important;
+  }
+
+  .hero-note{
+    margin-top:16px !important;
+    padding-bottom:4px;
+  }
+
+  /* a foto não fica colada no bloco acima */
+  .hero-photo{
+    margin-top:8px !important;
+    margin-bottom:20px !important;
+    max-width:340px !important;
+  }
+
+  /* espaço extra abaixo da foto/badge */
+  .hero-photo + *{
+    margin-top:8px;
+  }
+
+  /* vídeos: cartões horizontais, com frame visível e play no centro */
+  .deps{
+    padding-top:54px !important;
+    padding-bottom:62px !important;
+  }
+
+  .deps .sec-head{
+    margin-bottom:28px !important;
+  }
+
+  .deps-grid{
+    display:grid !important;
+    grid-template-columns:1fr !important;
+    grid-auto-rows:auto !important;
+    gap:18px !important;
+  }
+
+  .dep,
+  .dep:first-child,
+  .dep:nth-child(4){
+    width:100%;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio:16 / 9 !important;
+    grid-column:auto !important;
+    grid-row:auto !important;
+    border-radius:20px !important;
+    overflow:hidden;
+    background:#151519;
+  }
+
+  .dep video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    background:#151519;
+  }
+
+  .dep-ov{
+    background:linear-gradient(
+      to top,
+      rgba(0,0,0,.72) 0%,
+      rgba(0,0,0,.15) 48%,
+      rgba(0,0,0,.02) 75%
+    ) !important;
+  }
+
+  .dep-play{
+    top:50% !important;
+    right:auto !important;
+    left:50% !important;
+    width:58px !important;
+    height:58px !important;
+    transform:translate(-50%,-50%) !important;
+    border-radius:50% !important;
+    background:rgba(255,255,255,.93) !important;
+    color:var(--brand) !important;
+    border:0 !important;
+    box-shadow:0 8px 26px rgba(0,0,0,.24) !important;
+    backdrop-filter:none !important;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+
+  .dep-play svg{
+    width:20px !important;
+    height:20px !important;
+    margin-left:3px !important;
+  }
+
+  .dep-txt{
+    padding:15px 17px !important;
+  }
+
+  .dep-txt .n{
+    font-size:15px !important;
+  }
+
+  .dep-txt .s{
+    font-size:11.5px !important;
+  }
+
+  /* CTA inferior menor, sem cobrir grande parte do conteúdo */
+  .sticky-cta{
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    background:rgba(255,255,255,.92) !important;
+    backdrop-filter:blur(14px);
+    border-top:1px solid rgba(0,0,0,.06);
+    padding:9px 16px calc(9px + env(safe-area-inset-bottom,0px)) !important;
+    z-index:80;
+  }
+
+  .sticky-cta.is-visible{
+    display:block !important;
+  }
+
+  .sticky-cta .btn{
+    width:100% !important;
+    max-width:430px !important;
+    min-height:48px !important;
+    margin:0 auto !important;
+    font-size:12.5px !important;
+    box-shadow:0 8px 22px rgba(180,18,24,.26) !important;
+  }
+
+  /* Só reserva espaço inferior quando o CTA estiver aparecendo. */
+  body.sticky-cta-active{
+    padding-bottom:76px !important;
+  }
+
+  #inscricao{
+    scroll-margin-top:76px !important;
+  }
+}
+
+@media(max-width:390px){
+  .hero-in{
+    padding-top:38px !important;
+  }
+
+  .hero h1{
+    font-size:26px !important;
+  }
+
+  .hero .lead{
+    font-size:14.5px !important;
+  }
+
+  .dep-play{
+    width:54px !important;
+    height:54px !important;
+  }
+}
+
+@media(max-width:340px){
+  .hero h1{
+    font-size:24px !important;
+  }
+
+  .coupon-v{
+    font-size:19px !important;
+  }
+}
+
+/* ============================ MOBILE — TIPOGRAFIA E ESPAÇAMENTO ============================ */
+@media (max-width: 760px) {
+
+  .wrap{
+    padding-inline:16px !important;
+  }
+
+  /* topo / hero */
+  .hero-in{
+    padding-top:30px !important;
+    padding-bottom:48px !important;
+    gap:28px !important;
+  }
+
+  .hero-chip{
+    margin-bottom:16px !important;
+    padding:5px 10px 5px 5px !important;
+    max-width:100% !important;
+  }
+
+  .hero-chip span{
+    font-size:10.5px !important;
+    line-height:1.2 !important;
+    letter-spacing:-.01em !important;
+  }
+
+  .hero-chip img{
+    width:24px !important;
+    height:24px !important;
+  }
+
+  .hero h1{
+    font-size:24px !important;
+    line-height:1.08 !important;
+    letter-spacing:-.035em !important;
+    margin:0 0 16px !important;
+    max-width:100% !important;
+  }
+
+  .hero .lead{
+    font-size:12.8px !important;
+    line-height:1.62 !important;
+    max-width:100% !important;
+  }
+
+  .hero .lead b{
+    font-size:inherit !important;
+  }
+
+  /* cupom */
+  .coupon{
+    margin-top:20px !important;
+    padding:16px !important;
+    border-radius:16px !important;
+    gap:12px !important;
+  }
+
+  .coupon-k{
+    font-size:9px !important;
+    line-height:1.2 !important;
+    letter-spacing:.12em !important;
+  }
+
+  .coupon-v{
+    font-size:19px !important;
+    line-height:1.1 !important;
+    letter-spacing:.04em !important;
+    margin-top:5px !important;
+  }
+
+  .coupon-btn{
+    min-height:42px !important;
+    padding:10px 14px !important;
+    font-size:11.5px !important;
+  }
+
+  /* CTA principal */
+  .hero-cta{
+    margin-top:18px !important;
+  }
+
+  .hero-cta .btn,
+  .hero-cta button{
+    min-height:46px !important;
+    padding:12px 18px !important;
+    font-size:12px !important;
+  }
+
+  .hero-note{
+    margin-top:12px !important;
+    font-size:10.5px !important;
+    line-height:1.45 !important;
+  }
+
+  /* textos gerais das seções */
+  .eyebrow{
+    font-size:9px !important;
+    letter-spacing:.12em !important;
+  }
+
+  .sec-head{
+    margin-bottom:24px !important;
+  }
+
+  .sec-head h2,
+  h2{
+    font-size:24px !important;
+    line-height:1.12 !important;
+    margin-top:10px !important;
+    margin-bottom:12px !important;
+  }
+
+  h3{
+    font-size:16px !important;
+    line-height:1.25 !important;
+  }
+
+  .lead{
+    font-size:12.8px !important;
+    line-height:1.58 !important;
+  }
+
+  /* cards */
+  .mod h3{
+    font-size:14px !important;
+  }
+
+  .mod p{
+    font-size:11.5px !important;
+    line-height:1.5 !important;
+  }
+
+  .mods-foot b{
+    font-size:14px !important;
+  }
+
+  .mods-foot p{
+    font-size:11.5px !important;
+  }
+
+  /* depoimentos */
+  .deps .sec-head .lead{
+    font-size:12.5px !important;
+  }
+
+  .dep-txt .n{
+    font-size:13px !important;
+  }
+
+  .dep-txt .s{
+    font-size:10.5px !important;
+  }
+
+  /* formulário */
+  .form-l h2{
+    font-size:24px !important;
+    line-height:1.12 !important;
+  }
+
+  .form-l .lead{
+    font-size:12.5px !important;
+  }
+
+  .fl-list li{
+    font-size:11.5px !important;
+    line-height:1.45 !important;
+  }
+
+  .card h3{
+    font-size:18px !important;
+  }
+
+  .card .sub{
+    font-size:11.5px !important;
+  }
+
+  .field label{
+    font-size:11px !important;
+  }
+
+  .inp{
+    min-height:48px !important;
+    font-size:16px !important;
+  }
+
+  .check{
+    font-size:10.5px !important;
+  }
+
+  .form-foot{
+    font-size:10px !important;
+  }
+
+  /* footer */
+  .ft p,
+  .ft ul span,
+  .ft ul a{
+    font-size:11.5px !important;
+  }
+
+  .ft h4{
+    font-size:10px !important;
+  }
+
+  .ft-bot{
+    font-size:10px !important;
+  }
+
+  /* botão fixo */
+  .sticky-cta .btn{
+    min-height:46px !important;
+    font-size:12px !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .wrap{
+    padding-inline:14px !important;
+  }
+
+  .hero h1{
+    font-size:22px !important;
+  }
+
+  .hero .lead{
+    font-size:12px !important;
+  }
+
+  .hero-chip span{
+    font-size:9.8px !important;
+  }
+
+  .coupon-v{
+    font-size:18px !important;
+  }
+
+  .sec-head h2,
+  h2,
+  .form-l h2{
+    font-size:22px !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .hero h1{
+    font-size:20px !important;
+  }
+
+  .hero .lead{
+    font-size:11.5px !important;
+  }
+
+  .coupon-v{
+    font-size:17px !important;
+  }
+}
+</style>
 <style id="fabio-name-adjust">
 .hero-badge{max-width:290px}
 .hero-badge .n{line-height:1.25}
@@ -1030,7 +1520,6 @@ img, video, svg {
   .hero-badge .c{font-size:10.5px!important}
 }
 </style>
-
 </head>
 <body>
 <!-- ============================ HEADER ============================ -->
@@ -1150,10 +1639,10 @@ img, video, svg {
 <p class="lead">Depoimentos gravados por estudantes da IBRA. Toque para ouvir o que eles têm a dizer.</p>
 </div>
 <div class="deps-grid">
-<div class="dep"><video loop="" muted="" playsinline="" preload="metadata" src="https://ibranet.ibraeducacional.com.br/storage/videos/depoimentos/depoimento_1765193428_yqboQUhUi4.mp4"></video><div class="dep-ov"></div><div class="dep-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div><div class="dep-txt"><div class="n">Rafael</div><div class="s">Aluno · Faculdade IBRA</div></div></div>
-<div class="dep"><video loop="" muted="" playsinline="" preload="metadata" src="https://ibranet.ibraeducacional.com.br/storage/videos/depoimentos/depoimento_1765193380_wEfgO4WJaY.mp4"></video><div class="dep-ov"></div><div class="dep-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div><div class="dep-txt"><div class="n">Jessica</div><div class="s">Aluna · Faculdade IBRA</div></div></div>
-<div class="dep"><video loop="" muted="" playsinline="" preload="metadata" src="https://ibranet.ibraeducacional.com.br/storage/videos/depoimentos/depoimento_1765193342_s5t8SU94be.mp4"></video><div class="dep-ov"></div><div class="dep-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div><div class="dep-txt"><div class="n">Aline</div><div class="s">Aluna · Faculdade IBRA</div></div></div>
-<div class="dep"><video loop="" muted="" playsinline="" preload="metadata" src="https://ibranet.ibraeducacional.com.br/storage/videos/depoimentos/depoimento_1764955600_z83Mv10kHo.mp4"></video><div class="dep-ov"></div><div class="dep-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div><div class="dep-txt"><div class="n">Rita Cecília</div><div class="s">Aluna · Faculdade IBRA</div></div></div>
+<div class="dep"><video muted="" playsinline="" preload="auto" src="https://ibranet.ibraeducacional.com.br/storage/videos/depoimentos/depoimento_1765193428_yqboQUhUi4.mp4"></video><div class="dep-ov"></div><div class="dep-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div><div class="dep-txt"><div class="n">Rafael</div><div class="s">Aluno · Faculdade IBRA</div></div></div>
+<div class="dep"><video muted="" playsinline="" preload="auto" src="https://ibranet.ibraeducacional.com.br/storage/videos/depoimentos/depoimento_1765193380_wEfgO4WJaY.mp4"></video><div class="dep-ov"></div><div class="dep-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div><div class="dep-txt"><div class="n">Jessica</div><div class="s">Aluna · Faculdade IBRA</div></div></div>
+<div class="dep"><video muted="" playsinline="" preload="auto" src="https://ibranet.ibraeducacional.com.br/storage/videos/depoimentos/depoimento_1765193342_s5t8SU94be.mp4"></video><div class="dep-ov"></div><div class="dep-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div><div class="dep-txt"><div class="n">Aline</div><div class="s">Aluna · Faculdade IBRA</div></div></div>
+<div class="dep"><video muted="" playsinline="" preload="auto" src="https://ibranet.ibraeducacional.com.br/storage/videos/depoimentos/depoimento_1764955600_z83Mv10kHo.mp4"></video><div class="dep-ov"></div><div class="dep-play"><svg fill="currentColor" viewbox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div><div class="dep-txt"><div class="n">Rita Cecília</div><div class="s">Aluna · Faculdade IBRA</div></div></div>
 </div>
 </div>
 </section>
@@ -1445,6 +1934,73 @@ document.querySelectorAll('.scroll-form').forEach(btn=>{
     document.getElementById('inscricao')?.scrollIntoView({behavior:'smooth', block:'start'});
   });
 });
+
+/* ============================ MOBILE UX FINAL ============================ */
+(function(){
+  const videos = [...document.querySelectorAll('.dep video')];
+
+  /* Exibe um frame real do início do vídeo sem autoplay. */
+  videos.forEach((v)=>{
+    v.preload = 'auto';
+    v.muted = true;
+    v.playsInline = true;
+
+    const showFirstFrame = ()=>{
+      try{
+        if (Number.isFinite(v.duration) && v.duration > 0 && v.currentTime < 0.05){
+          v.currentTime = Math.min(0.12, Math.max(0.01, v.duration / 100));
+        }
+      }catch(e){}
+    };
+
+    v.addEventListener('loadedmetadata', showFirstFrame, {once:true});
+    v.addEventListener('loadeddata', ()=>{
+      v.pause();
+      const play = v.closest('.dep')?.querySelector('.dep-play');
+      if (play) play.style.opacity = '1';
+    }, {once:true});
+
+    /* iOS às vezes não baixa o primeiro frame até load() ser chamado. */
+    try{ v.load(); }catch(e){}
+  });
+
+  /* Estado do play sempre consistente. */
+  document.querySelectorAll('.dep').forEach(card=>{
+    const v = card.querySelector('video');
+    const play = card.querySelector('.dep-play');
+    if(!v || !play) return;
+
+    v.addEventListener('play', ()=> play.style.opacity='0');
+    v.addEventListener('pause', ()=> play.style.opacity='1');
+    v.addEventListener('ended', ()=>{
+      play.style.opacity='1';
+      try{ v.currentTime=.12; }catch(e){}
+    });
+  });
+
+  /* CTA mobile: só aparece DEPOIS que o formulário foi ultrapassado. */
+  const sticky = document.querySelector('.sticky-cta');
+  const form = document.getElementById('inscricao');
+  if (!sticky || !form) return;
+
+  const updateSticky = ()=>{
+    if (window.innerWidth > 760){
+      sticky.classList.remove('is-visible');
+      document.body.classList.remove('sticky-cta-active');
+      return;
+    }
+
+    const rect = form.getBoundingClientRect();
+    const passedForm = rect.bottom < 0;
+
+    sticky.classList.toggle('is-visible', passedForm);
+    document.body.classList.toggle('sticky-cta-active', passedForm);
+  };
+
+  window.addEventListener('scroll', updateSticky, {passive:true});
+  window.addEventListener('resize', updateSticky);
+  updateSticky();
+})();
 </script>
 </body>
 </html>
